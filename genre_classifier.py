@@ -24,9 +24,6 @@ class GenreClassifier:
             "pride and prejudice.txt": "romance",
         }
 
-        texts = []
-        labels = []
-
         try:
             for filename, genre in file_to_genre.items():
                 file_path = os.path.join(directory, filename)
@@ -53,12 +50,11 @@ class GenreClassifier:
     def train(self, X: List[str], y: List[str]) -> None:
         X_vectorized = self.vectorizer.fit_transform(X)
         self.model.fit(X_vectorized, y)
-        ##
+        #train each model
     
     def predict(self, text: str) -> str:
         text_vectorized = self.vectorizer.transform([self.preprocess(text)])
         prediction = self.model.predict(text_vectorized)
-        ##
         return prediction[0]
     
     def evaluate(self, X: List[str], y: List[str]) -> float:
@@ -66,3 +62,4 @@ class GenreClassifier:
         predictions = self.model.predict(X_vectorized)
         return accuracy_score(y, predictions)
     #on second thoughts is this method needed? it's not currently part of the plan
+    #other thoughts - display summary of key words/etc
