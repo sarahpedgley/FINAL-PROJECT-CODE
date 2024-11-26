@@ -22,7 +22,7 @@ def main():
     
     #labels = ["horror", "mystery"]
     
-    training_dir = "C:\Users\pedgl\OneDrive\Documents\Uni\Final Year Project\FINAL PROJECT CODE\training_data"
+    training_dir = "C:\\Users\\pedgl\\OneDrive\\Documents\\Uni\\Final Year Project\\FINAL PROJECT CODE\\training_data"
     texts, labels = classifier.load_training_data(training_dir)
 
     if not texts or not labels:

@@ -2,7 +2,7 @@ from models import EnsembleModel
 from vectorizer import Vectorizer
 from models import Model
 from sklearn.metrics import accuracy_score
-from typing import List
+from typing import List, Tuple
 import os
 
 class GenreClassifier:
@@ -11,7 +11,7 @@ class GenreClassifier:
         self.vectorizer = vectorizer
         self.genre_labels = genre_labels
 
-    def load_training_data(directory: str):
+    def load_training_data(self, directory: str) -> Tuple[List[str], List[str]]:
         texts = []
         labels = []
 
