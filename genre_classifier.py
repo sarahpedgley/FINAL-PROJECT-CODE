@@ -3,17 +3,48 @@ from vectorizer import Vectorizer
 from models import Model
 from sklearn.metrics import accuracy_score
 from typing import List
+import os
 
 class GenreClassifier:
     def __init__(self, model: Model, vectorizer: Vectorizer, genre_labels: List[str]):
         self.model = model
         self.vectorizer = vectorizer
         self.genre_labels = genre_labels
-    
-    def load_data(self, file_path: str) -> List[str]:
-        # load and return data from a file
-        file = open(file_path, "r") ####use numpy to read from local file??????
-        pass
+
+    def load_training_data(directory: str):
+        texts = []
+        labels = []
+
+        file_to_genre = {
+            "the wonderful wizard of oz.txt": "fantasy",
+            "the war of the worlds.txt": "sci-fi",
+            "carmilla.txt": "horror",
+            "the hound of the baskervilles.txt": "thriller",
+            "a study in scarlet.txt": "mystery",
+            "pride and prejudice.txt": "romance",
+        }
+
+        texts = []
+        labels = []
+
+        try:
+            for filename, genre in file_to_genre.items():
+                file_path = os.path.join(directory, filename)
+                with open(file_path, 'r', encoding='utf-8') as file:
+                    texts.append(file.read().strip())
+                    labels.append(genre)
+            if not texts:
+                print("No .txt files found in the directory.")
+                exit(1)
+        except FileNotFoundError:
+            print(f"Error: Directory '{directory}' not found.")
+            exit(1)
+        except Exception as e:
+            print(f"An error occurred while loading files: {e}")
+            exit(1)
+
+        return texts, labels
+
     
     def preprocess(self, text: str) -> str:
         # preprocess the text (tokenisation etc)

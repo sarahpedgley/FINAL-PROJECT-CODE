@@ -9,18 +9,25 @@ def main():
     
     # initialize components
     vectorizer = Vectorizer()
-    model = EnsembleModel()  # can replace with LogisticRegressionModel or SVMModel or naivebayes while developing
+    model = EnsembleModel()  # can replace with LogisticRegressionModel or SVMModel or naive bayes while developing
     genre_labels = ["fantasy", "sci-fi", "horror", "thriller", "mystery", "romance"]
     
     classifier = GenreClassifier(model, vectorizer, genre_labels)
     
     # example training data (load from a file) 
-    file1 = open("C:\Users\pedgl\OneDrive\Documents\Uni\Final Year Project\FINAL PROJECT CODE\training_data\carmilla.txt", 'r', encoding='utf-8')
+    #file1 = open("C:\Users\pedgl\OneDrive\Documents\Uni\Final Year Project\FINAL PROJECT CODE\training_data\carmilla.txt", 'r', encoding='utf-8')
     
-    texts = [file1, "A detective solving a murder mystery"]
+    #texts = [file1, "A detective solving a murder mystery"]
     #print("training data loaded")
     
-    labels = ["horror", "mystery"]
+    #labels = ["horror", "mystery"]
+    
+    training_dir = "C:\Users\pedgl\OneDrive\Documents\Uni\Final Year Project\FINAL PROJECT CODE\training_data"
+    texts, labels = classifier.load_training_data(training_dir)
+
+    if not texts or not labels:
+        print("Failed to load training data. Exiting...")
+        exit(1)
     
     # train the classifier
     classifier.train(texts, labels)
