@@ -5,9 +5,12 @@ from sklearn.metrics import accuracy_score
 from typing import List, Tuple
 import os
 import nltk
+#nltk.download('stopwords')
 import string
 import re
 import inflect
+from nltk.corpus import stopwords
+from nltk.tokenize import word_tokenize
 
 class GenreClassifier:
     def __init__(self, model: Model, vectorizer: Vectorizer, genre_labels: List[str]):
@@ -66,17 +69,23 @@ class GenreClassifier:
         text = ' '.join(new_string)
         #print(text)
         
-        #remove punctuation/special characters ##???
+        #remove punctuation/special characters ?? or is this useful for e.g romance ?
+        translator = str.maketrans('', '', string.punctuation)
+        text = text.translate(translator)
         
         #remove whitespace
+        text = " ".join(text.split())
         
-        #remove stopwords
+        #tokenise and remove stopwords
+        word_tokens = word_tokenize(text)
+        stopwords = set(stopwords.words("english"))
+        filtered = [word for word in word_tokens if word not in stopwords]
+        text = filtered
         
         #stemming
         
         #lemmatisation
-        
-        #tokenisation
+
         
         
         return text
