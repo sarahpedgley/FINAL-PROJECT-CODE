@@ -4,6 +4,10 @@ from models import Model
 from sklearn.metrics import accuracy_score
 from typing import List, Tuple
 import os
+import nltk
+import string
+import re
+import inflect
 
 class GenreClassifier:
     def __init__(self, model: Model, vectorizer: Vectorizer, genre_labels: List[str]):
@@ -44,7 +48,37 @@ class GenreClassifier:
 
     
     def preprocess(self, text: str) -> str:
-        # preprocess the text (tokenisation etc)
+        #lowercase
+        text = text.lower()
+        #print(text)
+        
+        #change numbers to words
+        x = inflect.engine()
+        temp_string = text.split()
+        new_string = []
+        for word in temp_string:
+            if word.isdigit():
+                temp = x.number_to_words(word)
+                new_string.append(temp)
+            else:
+                new_string.append(word)
+
+        text = ' '.join(new_string)
+        #print(text)
+        
+        #remove punctuation/special characters ##???
+        
+        #remove whitespace
+        
+        #remove stopwords
+        
+        #stemming
+        
+        #lemmatisation
+        
+        #tokenisation
+        
+        
         return text
     
     def train(self, X: List[str], y: List[str]) -> None:

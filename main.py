@@ -14,14 +14,6 @@ def main():
     
     classifier = GenreClassifier(model, vectorizer, genre_labels)
     
-    # example training data (load from a file) 
-    #file1 = open("C:\Users\pedgl\OneDrive\Documents\Uni\Final Year Project\FINAL PROJECT CODE\training_data\carmilla.txt", 'r', encoding='utf-8')
-    
-    #texts = [file1, "A detective solving a murder mystery"]
-    #print("training data loaded")
-    
-    #labels = ["horror", "mystery"]
-    
     training_dir = "C:\\Users\\pedgl\\OneDrive\\Documents\\Uni\\Final Year Project\\FINAL PROJECT CODE\\training_data"
     texts, labels = classifier.load_training_data(training_dir)
 
