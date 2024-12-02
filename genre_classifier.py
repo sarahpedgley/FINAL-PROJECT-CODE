@@ -5,12 +5,13 @@ from sklearn.metrics import accuracy_score
 from typing import List, Tuple
 import os
 import nltk
-#nltk.download('stopwords')
 import string
 import re
 import inflect
 from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
+from nltk.stem.porter import PorterStemmer
+from nltk.stem import WordNetLemmatizer
 
 class GenreClassifier:
     def __init__(self, model: Model, vectorizer: Vectorizer, genre_labels: List[str]):
@@ -51,6 +52,14 @@ class GenreClassifier:
 
     
     def preprocess(self, text: str) -> str:
+        ##there is also a predefined preprocess tool in the sci-kit library ? should that be used ?
+                
+        #downloads
+        nltk.download('punkt')
+        nltk.download('punkt_tab')
+        nltk.download('wordnet') 
+        nltk.download('stopwords') 
+        
         #lowercase
         text = text.lower()
         #print(text)
@@ -82,13 +91,18 @@ class GenreClassifier:
         filtered = [word for word in word_tokens if word not in stopwords]
         text = filtered
         
-        #stemming
+        #stemming (getting the root form of a word) (i don't think this is necessary if i have lemmatisation)
+        #stemmer = PorterStemmer()
+        #word_tokens = word_tokenize(text)
+        #stems = [stemmer.stem(word) for word in word_tokens]
+        #text = stems
         
         #lemmatisation
-
-        
-        
-        return text
+        lemmatizer = WordNetLemmatizer()
+        word_tokens = word_tokenize(text)
+        lemmas = [lemmatizer.lemmatize(word) for word in word_tokens]
+        text = lemmas
+        #print(text)
     
     def train(self, X: List[str], y: List[str]) -> None:
         X_vectorized = self.vectorizer.fit_transform(X)
