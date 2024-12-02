@@ -84,10 +84,11 @@ class GenreClassifier:
         
         #remove whitespace
         text = " ".join(text.split())
+        #print(text) #works up until this point
         
         #tokenise and remove stopwords
         word_tokens = word_tokenize(text)
-        stopwords = set(stopwords.words("english"))
+        stopwords = set(stopwords.words("english")) #getting an error here 
         filtered = [word for word in word_tokens if word not in stopwords]
         text = filtered
         
