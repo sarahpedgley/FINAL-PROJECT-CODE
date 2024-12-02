@@ -1,0 +1,3 @@
+This is an example text document.
+
+I am using it to test pre-processing so I don't have to print out whole documents.
