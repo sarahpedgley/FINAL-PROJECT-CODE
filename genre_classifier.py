@@ -84,26 +84,28 @@ class GenreClassifier:
         
         #remove whitespace
         text = " ".join(text.split())
-        #print(text) #works up until this point
+        #print(text) 
         
         #tokenise and remove stopwords
+        from nltk.corpus import stopwords
         word_tokens = word_tokenize(text)
-        stopwords = set(stopwords.words("english")) #getting an error here 
+        stopwords = set(stopwords.words("english")) 
         filtered = [word for word in word_tokens if word not in stopwords]
-        text = filtered
+        text = " ".join(filtered)
         
         #stemming (getting the root form of a word) (i don't think this is necessary if i have lemmatisation)
         #stemmer = PorterStemmer()
         #word_tokens = word_tokenize(text)
         #stems = [stemmer.stem(word) for word in word_tokens]
-        #text = stems
+        #text = " ".join(stems)
         
         #lemmatisation
+        from nltk.stem import WordNetLemmatizer
         lemmatizer = WordNetLemmatizer()
         word_tokens = word_tokenize(text)
         lemmas = [lemmatizer.lemmatize(word) for word in word_tokens]
-        text = lemmas
-        #print(text)
+        text = " ".join(lemmas)
+        print(text)
     
     def train(self, X: List[str], y: List[str]) -> None:
         X_vectorized = self.vectorizer.fit_transform(X)
