@@ -112,9 +112,9 @@ class GenreClassifier:
         return text
     
     def train(self, X: List[str], y: List[str]) -> None:
+        preprocessed_texts = [self.preprocess(text) for text in X]
         X_vectorized = self.vectorizer.fit_transform(X)
         self.model.fit(X_vectorized, y)
-        #train each model
     
     def predict(self, text: str) -> str:
         text_vectorized = self.vectorizer.transform([self.preprocess(text)])
