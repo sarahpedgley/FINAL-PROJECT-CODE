@@ -106,6 +106,10 @@ class GenreClassifier:
         lemmas = [lemmatizer.lemmatize(word) for word in word_tokens]
         text = " ".join(lemmas)
         print(text)
+
+        if text is None:
+            return ""
+        return text
     
     def train(self, X: List[str], y: List[str]) -> None:
         X_vectorized = self.vectorizer.fit_transform(X)

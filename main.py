@@ -22,6 +22,7 @@ def main():
         exit(1)
     
     # train the classifier
+    texts = [text if text is not None else "" for text in texts]
     classifier.train(texts, labels)
 
     filename = input("Please enter the file name/location of the literary sample you would like to classify: ")
