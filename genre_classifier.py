@@ -64,7 +64,7 @@ class GenreClassifier:
         text = text.lower()
         #print(text)
         
-        #change numbers to words
+        #change numbers to words - again remove because it may be helpful for sci-fi
         x = inflect.engine()
         temp_string = text.split()
         new_string = []

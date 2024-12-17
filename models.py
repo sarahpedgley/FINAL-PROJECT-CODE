@@ -89,3 +89,10 @@ class EnsembleModel(Model):
     def score(self, X, y) -> float:
         predictions = self.predict(X)
         return accuracy_score(y, predictions)
+    
+class DictionaryAlgorithm():
+    def __init__(self):
+        pass
+    
+    def compareDictionary(self, X, y):
+        pass

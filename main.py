@@ -1,5 +1,5 @@
 from genre_classifier import GenreClassifier
-from models import EnsembleModel, NaiveBayesModel, LogisticRegressionModel, SVMModel
+from models import EnsembleModel, NaiveBayesModel, LogisticRegressionModel, SVMModel, DictionaryAlgorithm
 from vectorizer import Vectorizer
 import os
 
@@ -9,9 +9,9 @@ def main():
     
     # initialize components
     vectorizer = Vectorizer()
-    model = EnsembleModel()  # can replace with LogisticRegressionModel or SVMModel or naive bayes while developing
+    model = EnsembleModel()  # can replace with LogisticRegressionModel or SVMModel or naive bayes or dictionary while developing
+    #also edit so dictionary results are printed separately
     genre_labels = ["fantasy", "sci-fi", "horror", "thriller", "mystery", "romance"]
-    
     classifier = GenreClassifier(model, vectorizer, genre_labels)
     
     training_dir = "C:\\Users\\pedgl\\OneDrive\\Documents\\Uni\\Final Year Project\\FINAL PROJECT CODE\\training_data"
