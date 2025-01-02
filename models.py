@@ -91,14 +91,19 @@ class EnsembleModel(Model):
         return accuracy_score(y, predictions)
     
 class DictionaryAlgorithm(): #new addition - create own dictionary based algorithm
-    def __init__(self):
-        pass
+    #note - should the preprocessing for this be different? more of it?
+    def __init__(self, genre_keywords: Dict[str, List[str]]):
+        self.genre_keywords = genre_keywords
     
-    def fit(self, X, y) -> None:
+    def count_keywords(self, text: str) -> Dict[str, int]:
+        return genre_scores
+    
+    def fit(self, X: List[str], y: List[str]) -> None:
+        #not needed for this algorithm but implementing for consistency
         pass
     
     def predict(self, X) -> List[str]:
-        pass
+        return prediction
     
     def score(self, X, y) -> float:
-        pass
+        return accuracy_score(y, predictions)
