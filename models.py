@@ -93,6 +93,15 @@ class EnsembleModel(Model):
 class DictionaryAlgorithm(): #new addition - create own dictionary based algorithm
     #note - should the preprocessing for this be different? more of it?
     def __init__(self, genre_keywords: Dict[str, List[str]]):
+        
+        genre_keywords = {
+    "fantasy": ["dragon", "magic", "wizard", "castle", "sorcery", "witch", "curse", "hex"],
+    "sci-fi": ["spaceship", "mars", "martian", "moon", "space", "alien", "robot", "future", "quantum", "equation"],
+    "horror": ["ghost", "haunted", "vampire", "zombie", "fear", "blood", "decapitated", "head","body"],
+    "thriller": ["murder", "spy", "conspiracy", "detective", "chase", "dark", "quiet", "suspicious", "shadow", "gloom"],
+    "mystery": ["murder","clue", "investigation", "detective", "crime", "whodunit", "scene", "body", "mystery", "police"],
+    "romance": ["love", "romantic", "passion", "kiss", "heartbreak", "husband", "wife", "beauty"]
+}
         self.genre_keywords = genre_keywords
     
     def count_keywords(self, text: str) -> Dict[str, int]:
