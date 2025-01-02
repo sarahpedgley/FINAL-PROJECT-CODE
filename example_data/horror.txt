@@ -1,5 +1,1 @@
-This is an example text document.
-
-I am using it to test pre-processing so I don't have to print out whole documents.
-
-12345()
+A story about vampires, gore, blood, and bodies with decapitated heads.

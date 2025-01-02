@@ -90,9 +90,15 @@ class EnsembleModel(Model):
         predictions = self.predict(X)
         return accuracy_score(y, predictions)
     
-class DictionaryAlgorithm():
+class DictionaryAlgorithm(): #new addition - create own dictionary based algorithm
     def __init__(self):
         pass
     
-    def compareDictionary(self, X, y):
+    def fit(self, X, y) -> None:
+        pass
+    
+    def predict(self, X) -> List[str]:
+        pass
+    
+    def score(self, X, y) -> float:
         pass
