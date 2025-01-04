@@ -98,8 +98,8 @@ class DictionaryAlgorithm(): #new addition - create own dictionary based algorit
     "fantasy": ["dragon", "magic", "wizard", "castle", "sorcery", "witch", "curse", "hex", "castle", "royal", "princess", "prince"],
     "sci-fi": ["spaceship", "mars", "martian", "moon", "space", "alien", "robot", "future", "quantum", "equation", "formula", "lunar", "solar"],
     "horror": ["ghost", "haunted", "vampire", "zombie", "fear", "blood", "decapitated", "head", "body", "kill"],
-    "thriller": ["murder", "spy", "conspiracy", "detective", "chase", "dark", "quiet", "suspicious", "shadow", "gloom"],
-    "mystery": ["murder","clue", "investigation", "detective", "crime", "whodunit", "scene", "body", "mystery", "police"],
+    "thriller": ["murder", "spy", "conspiracy", "detective", "chase", "dark", "quiet", "suspicious", "shadow", "gloom", "night"],
+    "mystery": ["murder","clue", "investigation", "detective", "crime", "whodunit", "scene", "body", "mystery", "police", "evidence", "robbery", "business", "affair", "puzzle"],
     "romance": ["love", "romantic", "passion", "kiss", "heartbreak", "husband", "wife", "beauty", "inheritance"]
 }
         self.genre_keywords = genre_keywords
