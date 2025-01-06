@@ -105,6 +105,11 @@ class DictionaryAlgorithm(): #new addition - create own dictionary based algorit
         self.genre_keywords = genre_keywords
     
     def count_keywords(self, text: str) -> Dict[str, int]:
+        genre_scores = {}  
+        for genre, keywords in self.genre_keywords.items():
+            genre_scores[genre] = 0  
+        for keyword in keywords:
+            genre_scores[genre] += text.count(keyword)  
         return genre_scores
     
     def fit(self, X: List[str], y: List[str]) -> None:
