@@ -105,7 +105,7 @@ class GenreClassifier:
         word_tokens = word_tokenize(text)
         lemmas = [lemmatizer.lemmatize(word) for word in word_tokens]
         text = " ".join(lemmas)
-        print(text)
+        #print(text)
 
         if text is None:
             return ""
