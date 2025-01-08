@@ -110,6 +110,7 @@ class DictionaryAlgorithm(): #new addition - create own dictionary based algorit
             genre_scores[genre] = 0  
         for keyword in keywords:
             genre_scores[genre] += text.count(keyword)  
+        #print(genre_scores)
         return genre_scores
     
     def fit(self, X: List[str], y: List[str]) -> None:
@@ -117,7 +118,13 @@ class DictionaryAlgorithm(): #new addition - create own dictionary based algorit
         pass
     
     def predict(self, X) -> List[str]:
-        return prediction
+        predictions = []
+        for text in X:
+            genre_scores = self.count_keywords(text)
+            best_genre = max(genre_scores, key=genre_scores.get)
+            predictions.append(best_genre)
+        return predictions
     
     def score(self, X, y) -> float:
+        predictions = self.predict(X)
         return accuracy_score(y, predictions)
