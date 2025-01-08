@@ -24,28 +24,49 @@ class GenreClassifier:
         labels = []
 
         file_to_genre = {
-            "the wonderful wizard of oz.txt": "fantasy",
-            "the war of the worlds.txt": "sci-fi",
-            "carmilla.txt": "horror",
-            "the hound of the baskervilles.txt": "thriller",
-            "a study in scarlet.txt": "mystery",
-            "pride and prejudice.txt": "romance",
+            "fantasy": [
+                "the wonderful wizard of oz.txt",
+                "alice's adventures in wonderland.txt"
+            ],
+            "sci-fi": [
+                "the war of the worlds.txt",
+                "twenty thousand leagues under the sea.txt"
+            ],
+            "horror": [
+                "carmilla.txt",
+                "metamorphosis,txt"
+            ],
+            "thriller": [
+                "the hound of the baskervilles.txt",
+                "the lonely house.txt"
+            ],
+            "mystery": [
+                "a study in scarlet.txt",
+                "the murder of roger ackroyd.txt"
+            ],
+            "romance": [
+                "pride and prejudice.txt",
+                "the blue castle.txt"
+            ],
         }
 
         try:
-            for filename, genre in file_to_genre.items():
-                file_path = os.path.join(directory, filename)
-                with open(file_path, 'r', encoding='utf-8') as file:
-                    texts.append(file.read().strip())
-                    labels.append(genre)
+            for genre, files in file_to_genre.items():
+                for filename in files:
+                    file_path = os.path.join(directory, filename)
+                    try:
+                        with open(file_path, 'r', encoding='utf-8') as file:
+                            texts.append(file.read().strip())
+                            labels.append(genre)
+                    except FileNotFoundError:
+                        print(f"File '{filename}' not found.")
+                    except Exception as e:
+                        print(f"An error occurred while reading file '{filename}': {e}")
             if not texts:
-                print("No .txt files found in the directory.")
+                print("No valid .txt files found in the directory.")
                 exit(1)
-        except FileNotFoundError:
-            print(f"Error: Directory '{directory}' not found.")
-            exit(1)
         except Exception as e:
-            print(f"An error occurred while loading files: {e}")
+            print(f"An unexpected error occurred: {e}")
             exit(1)
 
         return texts, labels
