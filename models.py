@@ -95,12 +95,12 @@ class DictionaryAlgorithm(): #new addition - create own dictionary based algorit
     def __init__(self, genre_keywords: Dict[str, List[str]]):
         
         genre_keywords = {
-    "fantasy": ["dragon", "magic", "wizard", "castle", "sorcery", "witch", "curse", "hex", "castle", "royal", "princess", "prince"],
-    "sci-fi": ["spaceship", "mars", "martian", "moon", "space", "alien", "robot", "future", "quantum", "equation", "formula", "lunar", "solar"],
-    "horror": ["ghost", "haunted", "vampire", "zombie", "fear", "blood", "decapitated", "head", "body", "kill"],
-    "thriller": ["murder", "spy", "conspiracy", "detective", "chase", "dark", "quiet", "suspicious", "shadow", "gloom", "night"],
-    "mystery": ["murder","clue", "investigation", "detective", "crime", "whodunit", "scene", "body", "mystery", "police", "evidence", "robbery", "business", "affair", "puzzle"],
-    "romance": ["love", "romantic", "passion", "kiss", "heartbreak", "husband", "wife", "beauty", "inheritance"]
+    "fantasy": ["dragon", "magic", "wizard", "castle", "sorcery", "witch", "curse", "hex", "castle", "royal", "princess", "prince", "palace", "country"],
+    "sci-fi": ["spaceship", "mars", "martian", "moon", "space", "alien", "robot", "future", "quantum", "equation", "formula", "lunar", "solar", "world", "earth"],
+    "horror": ["ghost", "haunted", "vampire", "zombie", "fear", "blood", "decapitated", "head", "body", "kill", "terror", "afraid"],
+    "thriller": ["murder", "spy", "conspiracy", "detective", "chase", "dark", "quiet", "suspicious", "shadow", "gloom", "night", "race"],
+    "mystery": ["murder","clue", "investigation", "detective", "crime", "scene", "body", "mystery", "police", "evidence", "robbery", "business", "affair", "puzzle", "knife", "gun"],
+    "romance": ["love", "marry", "romance", "passion", "kiss", "heart", "husband", "wife", "beauty", "inheritance", "partner", "estate"]
 }
         self.genre_keywords = genre_keywords
     
