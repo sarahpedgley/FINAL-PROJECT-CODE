@@ -77,7 +77,7 @@ class GenreClassifier:
                 
         #downloads
         nltk.download('punkt')
-        nltk.download('punkt_tab')
+        #nltk.download('punkt_tab')
         nltk.download('wordnet') 
         nltk.download('stopwords') 
         

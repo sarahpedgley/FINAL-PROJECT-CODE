@@ -11,7 +11,7 @@ genre_keywords = {
     "fantasy": ["dragon", "magic", "wizard", "castle", "sorcery", "witch", "curse", "hex", "castle", "royal", "princess", "prince", "palace", "country", "land"],
     "sci-fi": ["spaceship", "mars", "martian", "moon", "space", "alien", "robot", "future", "quantum", "equation", "formula", "lunar", "solar", "world", "earth", "space"],
     "horror": ["ghost", "haunted", "vampire", "zombie", "fear", "blood", "decapitated", "head", "body", "kill", "terror", "afraid", "limb", "grotesque", "organ", "ooze"],
-    "thriller": ["murder", "spy", "conspiracy", "detective", "chase", "dark", "quiet", "suspicious", "shadow", "gloom", "night", "race", "body", "heart"],
+    "thriller": ["murder", "spy", "conspiracy", "detective", "chase", "dark", "quiet", "suspicious", "shadow", "gloom", "night", "race", "body", "heart", "sudden"],
     "mystery": ["murder","clue", "investigation", "detective", "crime", "scene", "body", "mystery", "police", "evidence", "robbery", "business", "affair", "puzzle", "knife", "gun", "wonder"],
     "romance": ["love", "marry", "romance", "passion", "kiss", "heart", "husband", "wife", "beauty", "inheritance", "partner", "estate"]
 }
@@ -102,17 +102,13 @@ class EnsembleModel(Model):
 class DictionaryAlgorithm(): 
     #note - should the preprocessing for this be different? more of it?
     def __init__(self, genre_keywords: Dict[str, List[str]]):
-        
-
         self.genre_keywords = genre_keywords
     
     def count_keywords(self, text: str) -> Dict[str, int]:
-        genre_scores = {}  
+        genre_scores = {genre: 0 for genre in self.genre_keywords} 
         for genre, keywords in self.genre_keywords.items():
-            genre_scores[genre] = 0  
-        for keyword in keywords:
-            genre_scores[genre] += text.count(keyword)  
-        #print(genre_scores)
+            for keyword in keywords:
+                genre_scores[genre] += text.lower().count(keyword.lower()) 
         return genre_scores
     
     def fit(self, X: List[str], y: List[str]) -> None:
@@ -122,8 +118,8 @@ class DictionaryAlgorithm():
     def predict(self, X) -> List[str]:
         predictions = []
         for text in X:
-            genre_scores = self.count_keywords(text)
-            best_genre = max(genre_scores, key=genre_scores.get)
+            genre_scores = self.count_keywords(text)  # using raw text
+            best_genre = max(genre_scores, key=genre_scores.get) 
             predictions.append(best_genre)
         return predictions
     
