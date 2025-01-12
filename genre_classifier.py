@@ -1,4 +1,4 @@
-from models import EnsembleModel
+from models import EnsembleModel, NaiveBayesModel, LogisticRegressionModel, SVMModel, DictionaryAlgorithm
 from vectorizer import Vectorizer
 from models import Model
 from sklearn.metrics import accuracy_score
@@ -138,8 +138,13 @@ class GenreClassifier:
         self.model.fit(X_vectorized, y)
     
     def predict(self, text: str) -> str:
-        text_vectorized = self.vectorizer.transform([self.preprocess(text)])
-        prediction = self.model.predict(text_vectorized)
+        if isinstance(self.model, DictionaryAlgorithm):
+            text_raw = text
+            prediction = self.model.predict([text_raw])
+        else:
+            text_raw = self.preprocess(text)
+            text_vectorized = self.vectorizer.transform([text_raw])
+            prediction = self.model.predict([text_vectorized])
         return prediction[0]
     
     def evaluate(self, X: List[str], y: List[str]) -> float:
