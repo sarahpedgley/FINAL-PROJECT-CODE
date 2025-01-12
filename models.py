@@ -75,7 +75,7 @@ class EnsembleModel(Model):
         self.svm = SVC(probability=True)  # probability estimates for voting
 
     def fit(self, X, y) -> None:
-        # fit all models on the same data
+        # fit all models on same data
         self.naive_bayes.fit(X, y)
         self.logistic_regression.fit(X, y)
         self.svm.fit(X, y)
@@ -112,7 +112,7 @@ class DictionaryAlgorithm():
         return genre_scores
     
     def fit(self, X: List[str], y: List[str]) -> None:
-        #not needed for this algorithm but implementing for consistency
+        #not needed for this algorithm
         pass
     
     def predict(self, X) -> List[str]:

@@ -73,7 +73,6 @@ class GenreClassifier:
 
     
     def preprocess(self, text: str) -> str:
-        ##there is also a predefined preprocess tool in the sci-kit library ? should that be used ?
                 
         #downloads
         nltk.download('punkt')
@@ -134,7 +133,7 @@ class GenreClassifier:
     
     def train(self, X: List[str], y: List[str]) -> None:
         preprocessed_texts = [self.preprocess(text) for text in X]
-        X_vectorized = self.vectorizer.fit_transform(X)
+        X_vectorized = self.vectorizer.fit_transform(preprocessed_texts)
         self.model.fit(X_vectorized, y)
     
     def predict(self, text: str) -> str:
@@ -144,12 +143,12 @@ class GenreClassifier:
         else:
             text_raw = self.preprocess(text)
             text_vectorized = self.vectorizer.transform([text_raw])
-            prediction = self.model.predict([text_vectorized])
+            prediction = self.model.predict(text_vectorized)
         return prediction[0]
     
     def evaluate(self, X: List[str], y: List[str]) -> float:
         X_vectorized = self.vectorizer.transform(X)
         predictions = self.model.predict(X_vectorized)
         return accuracy_score(y, predictions)
-    #on second thoughts is this method needed? it's not currently part of the plan
+
     #other thoughts - display summary of key words/etc
