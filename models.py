@@ -7,6 +7,15 @@ from sklearn.naive_bayes import MultinomialNB
 from sklearn.linear_model import LogisticRegression
 from sklearn.svm import SVC
     
+genre_keywords = {
+    "fantasy": ["dragon", "magic", "wizard", "castle", "sorcery", "witch", "curse", "hex", "castle", "royal", "princess", "prince", "palace", "country", "land"],
+    "sci-fi": ["spaceship", "mars", "martian", "moon", "space", "alien", "robot", "future", "quantum", "equation", "formula", "lunar", "solar", "world", "earth", "space"],
+    "horror": ["ghost", "haunted", "vampire", "zombie", "fear", "blood", "decapitated", "head", "body", "kill", "terror", "afraid", "limb", "grotesque", "organ", "ooze"],
+    "thriller": ["murder", "spy", "conspiracy", "detective", "chase", "dark", "quiet", "suspicious", "shadow", "gloom", "night", "race", "body", "heart"],
+    "mystery": ["murder","clue", "investigation", "detective", "crime", "scene", "body", "mystery", "police", "evidence", "robbery", "business", "affair", "puzzle", "knife", "gun", "wonder"],
+    "romance": ["love", "marry", "romance", "passion", "kiss", "heart", "husband", "wife", "beauty", "inheritance", "partner", "estate"]
+}
+        
 class Model(ABC):
     @abstractmethod
     def fit(self, X: List[str], y: List[str]) -> None:
@@ -94,14 +103,7 @@ class DictionaryAlgorithm():
     #note - should the preprocessing for this be different? more of it?
     def __init__(self, genre_keywords: Dict[str, List[str]]):
         
-        genre_keywords = {
-    "fantasy": ["dragon", "magic", "wizard", "castle", "sorcery", "witch", "curse", "hex", "castle", "royal", "princess", "prince", "palace", "country", "land"],
-    "sci-fi": ["spaceship", "mars", "martian", "moon", "space", "alien", "robot", "future", "quantum", "equation", "formula", "lunar", "solar", "world", "earth", "space"],
-    "horror": ["ghost", "haunted", "vampire", "zombie", "fear", "blood", "decapitated", "head", "body", "kill", "terror", "afraid", "limb", "grotesque", "organ", "ooze"],
-    "thriller": ["murder", "spy", "conspiracy", "detective", "chase", "dark", "quiet", "suspicious", "shadow", "gloom", "night", "race", "body", "heart"],
-    "mystery": ["murder","clue", "investigation", "detective", "crime", "scene", "body", "mystery", "police", "evidence", "robbery", "business", "affair", "puzzle", "knife", "gun", "wonder"],
-    "romance": ["love", "marry", "romance", "passion", "kiss", "heart", "husband", "wife", "beauty", "inheritance", "partner", "estate"]
-}
+
         self.genre_keywords = genre_keywords
     
     def count_keywords(self, text: str) -> Dict[str, int]:

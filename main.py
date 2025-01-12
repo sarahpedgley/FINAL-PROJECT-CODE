@@ -1,24 +1,46 @@
 from genre_classifier import GenreClassifier
 from models import EnsembleModel, NaiveBayesModel, LogisticRegressionModel, SVMModel, DictionaryAlgorithm
+from models import genre_keywords
 from vectorizer import Vectorizer
 import os
 
 def main():
     
     print("Literary genre classifier.")
-    
-    # initialize components
+
     vectorizer = Vectorizer()
-    model = EnsembleModel()  # can replace with LogisticRegressionModel or SVMModel or naive bayes or dictionary while developing
-    #model = DictionaryAlgorithm(genre_keywords=) #also edit so dictionary results are printed separately?
     genre_labels = ["Fantasy", "Sci-fi", "Horror", "Thriller", "Mystery", "Romance"]
-    classifier = GenreClassifier(model, vectorizer, genre_labels)
+    #model = EnsembleModel()
+    
+    from models import genre_keywords 
+    dictionary_algorithm = DictionaryAlgorithm(genre_keywords=genre_keywords)
+    
+    models = {
+        "Naive Bayes": NaiveBayesModel(),
+        "Logistic Regression": LogisticRegressionModel(),
+        "SVM": SVMModel(),
+        "Ensemble": EnsembleModel(),
+        "Dictionary": dictionary_algorithm
+    }
     
     training_dir = "C:\\Users\\pedgl\\OneDrive\\Documents\\Uni\\Final Year Project\\FINAL PROJECT CODE\\training_data"
-    texts, labels = classifier.load_training_data(training_dir)
+
+    # Load training data
+    texts, labels = [], []
+    try:
+        print(f"Training model: {model_name}")
+        if isinstance(model, DictionaryAlgorithm):
+            # Skip vectorization for DictionaryAlgorithm
+            model.fit(texts, labels)
+        else:
+            classifier = GenreClassifier(model, vectorizer, genre_labels)
+            classifier.train(texts, labels)
+    except Exception as e:
+        print(f"Error loading training data: {e}")
+        exit(1)
 
     if not texts or not labels:
-        print("Failed to load training data. Exiting...")
+        print("Training data is empty. Exiting...")
         exit(1)
     
     # train the classifier
@@ -40,10 +62,21 @@ def main():
     prediction = classifier.predict(sample.lower())   
     print("Prediction:", prediction)
     
-    # evaluate the classifier
-    accuracy = classifier.evaluate(texts, labels)
-    print("Accuracy:", accuracy)
-    #edit this. instead, it should be three top genres and their percentage?
+    # loop through each model so we get results for each one individually 
+    print("\nResults of each model:")
+    for model_name, model in models.items():
+        try:
+            if isinstance(model, DictionaryAlgorithm):
+                # skips vectorization
+                prediction = model.predict([sample.lower()])[0]
+            else:
+                classifier = GenreClassifier(model, vectorizer, genre_labels)
+                prediction = classifier.predict(sample.lower())
+
+            print(f"\n{model_name} Prediction:")
+            print(f"  {prediction}")
+        except Exception as e:
+            print(f"Error with model '{model_name}': {e}")
 
 if __name__ == "__main__":
     main()
