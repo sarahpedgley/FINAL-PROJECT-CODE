@@ -10,8 +10,8 @@ def main():
     # initialize components
     vectorizer = Vectorizer()
     model = EnsembleModel()  # can replace with LogisticRegressionModel or SVMModel or naive bayes or dictionary while developing
-    #also edit so dictionary results are printed separately
-    genre_labels = ["fantasy", "sci-fi", "horror", "thriller", "mystery", "romance"]
+    #model = DictionaryAlgorithm(genre_keywords=) #also edit so dictionary results are printed separately?
+    genre_labels = ["Fantasy", "Sci-fi", "Horror", "Thriller", "Mystery", "Romance"]
     classifier = GenreClassifier(model, vectorizer, genre_labels)
     
     training_dir = "C:\\Users\\pedgl\\OneDrive\\Documents\\Uni\\Final Year Project\\FINAL PROJECT CODE\\training_data"
@@ -43,7 +43,7 @@ def main():
     # evaluate the classifier
     accuracy = classifier.evaluate(texts, labels)
     print("Accuracy:", accuracy)
-    #(not sure if this is needed)
+    #edit this. instead, it should be three top genres and their percentage?
 
 if __name__ == "__main__":
     main()
