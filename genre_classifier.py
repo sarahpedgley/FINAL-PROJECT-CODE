@@ -151,4 +151,4 @@ class GenreClassifier:
         predictions = self.model.predict(X_vectorized)
         return accuracy_score(y, predictions)
 
-    #other thoughts - display summary of key words/etc
+    #other thoughts - display summary of key words print top 3 genres and percentages, 
