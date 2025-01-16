@@ -31,7 +31,7 @@ def main():
     # Train classifiers
     for model_name, model in models.items():
         try:
-            print(f"Training model: {model_name}")
+            #print(f"Training model: {model_name}")
             classifier = GenreClassifier(model, vectorizer, genre_labels)
             classifier.train(texts, labels)
         except Exception as e:
@@ -53,7 +53,7 @@ def main():
     prediction = classifier.predict(sample.lower())   
     print("Prediction:", prediction)
 
-    # loop through each model so we get results for each one individually 
+    # loop through each model so we get results for each one individually #it's currently printing the nltk_data thing between outputs
     print("\nResults of each model:")
     for model_name, model in models.items():
         try:
@@ -68,3 +68,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+    #rerun = input("Would you like to classify another sample")

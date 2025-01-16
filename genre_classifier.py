@@ -13,6 +13,11 @@ from nltk.tokenize import word_tokenize
 from nltk.stem.porter import PorterStemmer
 from nltk.stem import WordNetLemmatizer
 
+#downloads
+nltk.download('punkt', quiet=True)
+nltk.download('wordnet', quiet=True) 
+nltk.download('stopwords', quiet=True) 
+
 class GenreClassifier:
     def __init__(self, model: Model, vectorizer: Vectorizer, genre_labels: List[str]):
         self.model = model
@@ -24,27 +29,27 @@ class GenreClassifier:
         labels = []
 
         file_to_genre = {
-            "fantasy": [
+            "Fantasy": [
                 "the wonderful wizard of oz.txt",
                 "alice's adventures in wonderland.txt"
             ],
-            "sci-fi": [
+            "Sci-fi": [
                 "the war of the worlds.txt",
                 "twenty thousand leagues under the sea.txt"
             ],
-            "horror": [
+            "Horror": [
                 "carmilla.txt",
                 "metamorphosis.txt"
             ],
-            "thriller": [
+            "Thriller": [
                 "the hound of the baskervilles.txt",
                 "the lonely house.txt"
             ],
-            "mystery": [
+            "Mystery": [
                 "a study in scarlet.txt",
                 "the murder of roger ackroyd.txt"
             ],
-            "romance": [
+            "Romance": [
                 "pride and prejudice.txt",
                 "the blue castle.txt"
             ],
@@ -73,12 +78,6 @@ class GenreClassifier:
 
     
     def preprocess(self, text: str) -> str:
-                
-        #downloads
-        nltk.download('punkt')
-        #nltk.download('punkt_tab')
-        nltk.download('wordnet') 
-        nltk.download('stopwords') 
         
         #lowercase
         text = text.lower()
