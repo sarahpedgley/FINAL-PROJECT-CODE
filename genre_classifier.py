@@ -39,7 +39,11 @@ class GenreClassifier:
             ],
             "Horror": [
                 "carmilla.txt",
-                "metamorphosis.txt"
+                "metamorphosis.txt",
+                "dracula.txt",
+                "the castle of otranto.txt",
+                "the mysteries of udolpho.txt",
+                "the trial.txt"
             ],
             "Thriller": [
                 "the hound of the baskervilles.txt",
