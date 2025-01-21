@@ -31,11 +31,19 @@ class GenreClassifier:
         file_to_genre = {
             "Fantasy": [
                 "the wonderful wizard of oz.txt",
-                "alice's adventures in wonderland.txt"
+                "alice's adventures in wonderland.txt",
+                "a journey to the centre of the earth.txt",
+                "peter pan.txt",
+                "the marvelous land of oz.txt",
+                "through the looking-glass.txt"
             ],
             "Sci-fi": [
                 "the war of the worlds.txt",
-                "twenty thousand leagues under the sea.txt"
+                "twenty thousand leagues under the sea.txt",
+                "the time machine.txt",
+                "RUR.txt",
+                "the eyes have it.txt",
+                "the island of doctor moreau.txt"
             ],
             "Horror": [
                 "carmilla.txt",
