@@ -13,7 +13,7 @@ genre_keywords = {
     "Horror": ["ghost", "haunted", "vampire", "zombie", "fear", "blood", "decapitated", "head", "body", "kill", "terror", "afraid", "limb", "grotesque", "organ", "ooze"],
     "Thriller": ["murder", "spy", "conspiracy", "detective", "chase", "dark", "quiet", "suspicious", "shadow", "gloom", "night", "race", "body", "heart", "sudden", "knife", "fright"],
     "Mystery": ["mystery", "murder","clue", "investigation", "detective", "crime", "scene", "body", "police", "evidence", "robbery", "business", "affair", "puzzle", "knife", "gun", "wonder"],
-    "Romance": ["love", "marry", "romance", "passion", "kiss", "heart", "husband", "wife", "beauty", "inheritance", "partner", "estate", "house", "home", "hand", "daughter", "family"]
+    "Romance": ["love", "marry", "romance", "passion", "kiss", "heart", "husband", "wife", "beauty", "inheritance", "partner", "estate", "house", "home", "hand", "daughter", "family", "sex", "pleasure"]
 }
         
 class Model(ABC):

@@ -57,9 +57,9 @@ class GenreClassifier:
                 "the hound of the baskervilles.txt",
                 "the lonely house.txt",
                 "benighted.txt",
-                "knock three-one-two",
-                "the mill of silence",
-                "the three just men"
+                "knock three-one-two.txt",
+                "the mill of silence.txt",
+                "the three just men.txt"
             ],
             "Mystery": [
                 "a study in scarlet.txt",

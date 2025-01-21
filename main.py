@@ -53,7 +53,7 @@ def main():
     prediction = classifier.predict(sample.lower())   
     print("Prediction:", prediction)
 
-    # loop through each model so we get results for each one individually #it's currently printing the nltk_data thing between outputs
+    # loop through each model so we get results for each one individually
     print("\nResults of each model:")
     for model_name, model in models.items():
         try:
