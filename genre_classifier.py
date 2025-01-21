@@ -71,7 +71,11 @@ class GenreClassifier:
             ],
             "Romance": [
                 "pride and prejudice.txt",
-                "the blue castle.txt"
+                "the blue castle.txt",
+                "middlemarch.txt",
+                "the lady of the lake.txt",
+                "the romance of lust.txt",
+                "wuthering heights.txt"
             ],
         }
 
