@@ -48,6 +48,10 @@ class GenreClassifier:
             "Mystery": [
                 "a study in scarlet.txt",
                 "the murder of roger ackroyd.txt"
+                "the memoirs of sherlock holmes.txt"
+                "the murder on the links.txt"
+                "the return of sherlock holmes.txt"
+                "the mysterious affair at styles.txt"
             ],
             "Romance": [
                 "pride and prejudice.txt",
@@ -150,4 +154,4 @@ class GenreClassifier:
         predictions = self.model.predict(X_vectorized)
         return accuracy_score(y, predictions)
 
-    #other thoughts - display summary of key words print top 3 genres and percentages, 
+    #other thoughts - display summary of key words, print top 3 genres and percentages, 
