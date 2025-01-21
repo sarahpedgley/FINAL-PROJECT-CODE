@@ -43,14 +43,18 @@ class GenreClassifier:
             ],
             "Thriller": [
                 "the hound of the baskervilles.txt",
-                "the lonely house.txt"
+                "the lonely house.txt",
+                "benighted.txt",
+                "knock three-one-two",
+                "the mill of silence",
+                "the three just men"
             ],
             "Mystery": [
                 "a study in scarlet.txt",
-                "the murder of roger ackroyd.txt"
-                "the memoirs of sherlock holmes.txt"
-                "the murder on the links.txt"
-                "the return of sherlock holmes.txt"
+                "the murder of roger ackroyd.txt",
+                "the memoirs of sherlock holmes.txt",
+                "the murder on the links.txt",
+                "the return of sherlock holmes.txt",
                 "the mysterious affair at styles.txt"
             ],
             "Romance": [
