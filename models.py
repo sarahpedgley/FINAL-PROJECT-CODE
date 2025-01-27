@@ -8,10 +8,10 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.svm import SVC
     
 genre_keywords = {
-    "Fantasy": ["dragon", "magic", "wizard", "castle", "sorcery", "witch", "curse", "hex", "castle", "royal", "princess", "prince", "palace", "country", "land"],
-    "Sci-fi": ["spaceship", "mars", "martian", "moon", "space", "alien", "robot", "future", "quantum", "equation", "formula", "lunar", "solar", "world", "earth", "space", "tunnel", "fact", "theorem", "AI"],
-    "Horror": ["ghost", "haunted", "vampire", "zombie", "fear", "blood", "decapitated", "head", "body", "kill", "terror", "afraid", "limb", "grotesque", "organ", "ooze"],
-    "Thriller": ["murder", "spy", "conspiracy", "detective", "chase", "dark", "quiet", "suspicious", "shadow", "gloom", "night", "race", "body", "heart", "sudden", "knife", "fright"],
+    "Fantasy": ["dragon", "magic", "wizard", "castle", "sorcery", "witch", "curse", "hex", "castle", "royal", "princess", "prince", "palace", "country", "land", "wonder", "ancient", "prophecy", "god", "goddess", "elf", "fight", "sword", "battle", "hero", "quest", "knight", "alchemy", "rune", "beast", "forest", "spell", "enchantment", "fairy", "phoenix", "portal", "artifact"],
+    "Sci-fi": ["spaceship", "mars", "martian", "moon", "space", "alien", "robot", "future", "quantum", "equation", "formula", "lunar", "solar", "world", "earth", "space", "tunnel", "fact", "theorem", "AI", "galaxy", "simulation", "technology", "dystopia", "utopia", "android", "cyber", "gravity", "universe", "federation", "clone", "hologram", "drone", "orbital", "colony"],
+    "Horror": ["ghost", "haunted", "vampire", "zombie", "fear", "blood", "decapitated", "head", "body", "kill", "terror", "afraid", "limb", "grotesque", "organ", "ooze", "needle", "coffin", "grave"],
+    "Thriller": ["murder", "spy", "conspiracy", "detective", "chase", "dark", "quiet", "suspicious", "shadow", "gloom", "night", "race", "body", "heart", "sudden", "knife", "fright", "fog"],
     "Mystery": ["mystery", "murder","clue", "investigation", "detective", "crime", "scene", "body", "police", "evidence", "robbery", "business", "affair", "puzzle", "knife", "gun", "wonder"],
     "Romance": ["love", "marry", "romance", "passion", "kiss", "heart", "husband", "wife", "beauty", "inheritance", "partner", "estate", "house", "home", "hand", "daughter", "family", "sex", "pleasure"]
 }
