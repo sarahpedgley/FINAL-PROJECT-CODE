@@ -28,17 +28,16 @@ def main():
         print("Training data is empty.")
         exit(1)
     
-    # Train classifiers
+    # train classifiers
     for model_name, model in models.items():
         try:
-            #print(f"Training model: {model_name}")
             classifier = GenreClassifier(model, vectorizer, genre_labels)
             classifier.train(texts, labels)
         except Exception as e:
             print(f"Error loading training data: {e}")
             exit(1)
 
-    # Classify sample text
+    # classify sample text
     filename = input("Please enter the file name/location of the literary sample you would like to classify: ")
     try:
         with open(filename, 'r', encoding='utf-8') as file:
@@ -68,4 +67,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-    #rerun = input("Would you like to classify another sample")

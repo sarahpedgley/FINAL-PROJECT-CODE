@@ -13,7 +13,6 @@ from nltk.tokenize import word_tokenize
 from nltk.stem.porter import PorterStemmer
 from nltk.stem import WordNetLemmatizer
 
-#downloads
 nltk.download('punkt', quiet=True)
 nltk.download('wordnet', quiet=True) 
 nltk.download('stopwords', quiet=True) 
@@ -99,13 +98,11 @@ class GenreClassifier:
             exit(1)
 
         return texts, labels
-
     
     def preprocess(self, text: str) -> str:
         
         #lowercase
         text = text.lower()
-        #print(text)
         
         #change numbers to words - again remove because it may be helpful for sci-fi
         x = inflect.engine()
@@ -119,7 +116,6 @@ class GenreClassifier:
                 new_string.append(word)
 
         text = ' '.join(new_string)
-        #print(text)
         
         #remove punctuation/special characters ?? or is this useful for e.g romance ?
         translator = str.maketrans('', '', string.punctuation)
@@ -127,7 +123,6 @@ class GenreClassifier:
         
         #remove whitespace
         text = " ".join(text.split())
-        #print(text) 
         
         #tokenise and remove stopwords
         from nltk.corpus import stopwords
@@ -136,19 +131,12 @@ class GenreClassifier:
         filtered = [word for word in word_tokens if word not in stopwords]
         text = " ".join(filtered)
         
-        #stemming (getting the root form of a word) (i don't think this is necessary if i have lemmatisation)
-        #stemmer = PorterStemmer()
-        #word_tokens = word_tokenize(text)
-        #stems = [stemmer.stem(word) for word in word_tokens]
-        #text = " ".join(stems)
-        
         #lemmatisation
         from nltk.stem import WordNetLemmatizer
         lemmatizer = WordNetLemmatizer()
         word_tokens = word_tokenize(text)
         lemmas = [lemmatizer.lemmatize(word) for word in word_tokens]
         text = " ".join(lemmas)
-        #print(text)
 
         if text is None:
             return ""
@@ -173,5 +161,3 @@ class GenreClassifier:
         X_vectorized = self.vectorizer.transform(X)
         predictions = self.model.predict(X_vectorized)
         return accuracy_score(y, predictions)
-
-    #other thoughts - display summary of key words, print top 3 genres and percentages, 

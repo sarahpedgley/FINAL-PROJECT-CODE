@@ -100,7 +100,6 @@ class EnsembleModel(Model):
         return accuracy_score(y, predictions)
     
 class DictionaryAlgorithm(): 
-    #note - should the preprocessing for this be different? more of it?
     def __init__(self, genre_keywords: Dict[str, List[str]]):
         self.genre_keywords = genre_keywords
     
