@@ -57,11 +57,17 @@ def main():
     for model_name, model in models.items():
         try:
             if isinstance(model, DictionaryAlgorithm):
-                prediction = model.predict([sample.lower()])[0]
+                prediction_probs = model.predict([sample.lower()])[0] 
             else:
                 classifier = GenreClassifier(model, vectorizer, genre_labels)
-                prediction = classifier.predict(sample.lower())
-            print(f"\n{model_name} Prediction: {prediction}")
+                prediction_probs = classifier.predict(sample.lower()) 
+
+            # top two predictions
+            most_likely = prediction_probs[0]
+            second_most_likely = prediction_probs[1]
+
+            print(f"\n{model_name} Prediction: {most_likely[0]} ({most_likely[1]} keywords)")
+            print(f"{model_name} Second Most Likely: {second_most_likely[0]} ({second_most_likely[1]} keywords)")
         except Exception as e:
             print(f"Error with model '{model_name}': {e}")
 
