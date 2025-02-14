@@ -70,16 +70,13 @@ class LogisticRegressionModel(Model):
         
 class SVMModel(Model):
     def __init__(self):
-        self.model = SVC()
-    
+        self.model = SVC(probability=True) 
+
     def fit(self, X, y) -> None:
         self.model.fit(X, y)
-    
-    #def predict(self, X) -> List[str]:
-        #return self.model.predict(X)
-    
+
     def predict(self, X):
-        return self.model.predict_proba(X)
+        return self.model.predict_proba(X) 
     
     def score(self, X, y) -> float:
         return self.model.score(X, y)
