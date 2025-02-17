@@ -12,8 +12,8 @@ def main():
     
     models = {
         "Naive Bayes": NaiveBayesModel(genre_labels),
-        "Logistic Regression": LogisticRegressionModel(),
-        "SVM": SVMModel(),
+        "Logistic Regression": LogisticRegressionModel(genre_labels),
+        "SVM": SVMModel(genre_labels),
         "Ensemble": EnsembleModel(),
         "Dictionary": dictionary_algorithm
     }

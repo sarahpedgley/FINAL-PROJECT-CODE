@@ -48,8 +48,9 @@ class NaiveBayesModel(Model):
         return self.model.score(X, y)
 
 class LogisticRegressionModel(Model):
-    def __init__(self):
+    def __init__(self, genre_labels):
         self.model = LogisticRegression()
+        self.genre_labels = genre_labels
     
     def fit(self, X, y) -> None:
         self.model.fit(X, y)
@@ -64,8 +65,9 @@ class LogisticRegressionModel(Model):
         return self.model.score(X, y)
         
 class SVMModel(Model):
-    def __init__(self):
+    def __init__(self, genre_labels):
         self.model = SVC(probability=True) 
+        self.genre_labels = genre_labels
 
     def fit(self, X, y) -> None:
         self.model.fit(X, y)
