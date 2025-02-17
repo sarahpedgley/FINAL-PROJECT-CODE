@@ -31,17 +31,15 @@ class Model(ABC):
         pass
 
 class NaiveBayesModel(Model):
-    def __init__(self):
+    def __init__(self, genre_labels):
         self.model = MultinomialNB()
+        self.genre_labels = genre_labels
     
     def fit(self, X, y) -> None:
         self.model.fit(X, y)
     
-    #def predict(self, X) -> List[str]:
-        #return self.model.predict(X)
-    
     def predict(self, text):
-        probabilities = self.model.predict_proba([text])[0] 
+        probabilities = self.model.predict_proba(X)[0] 
         genre_probabilities = list(zip(self.genre_labels, probabilities))
         genre_probabilities.sort(key=lambda x: x[1], reverse=True)
         return genre_probabilities
@@ -56,11 +54,8 @@ class LogisticRegressionModel(Model):
     def fit(self, X, y) -> None:
         self.model.fit(X, y)
     
-    #def predict(self, X) -> List[str]:
-        #return self.model.predict(X)
-    
     def predict(self, text):
-        probabilities = self.model.predict_proba([text])[0] 
+        probabilities = self.model.predict_proba(X)[0] 
         genre_probabilities = list(zip(self.genre_labels, probabilities))
         genre_probabilities.sort(key=lambda x: x[1], reverse=True)
         return genre_probabilities
@@ -76,7 +71,10 @@ class SVMModel(Model):
         self.model.fit(X, y)
 
     def predict(self, X):
-        return self.model.predict_proba(X) 
+        probabilities = self.model.predict_proba(X)[0]
+        genre_probabilities = list(zip(self.genre_labels, probabilities))
+        genre_probabilities.sort(key=lambda x: x[1], reverse=True)
+        return genre_probabilities
     
     def score(self, X, y) -> float:
         return self.model.score(X, y)

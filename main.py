@@ -11,7 +11,7 @@ def main():
     dictionary_algorithm = DictionaryAlgorithm(genre_keywords=genre_keywords)
     
     models = {
-        "Naive Bayes": NaiveBayesModel(),
+        "Naive Bayes": NaiveBayesModel(genre_labels),
         "Logistic Regression": LogisticRegressionModel(),
         "SVM": SVMModel(),
         "Ensemble": EnsembleModel(),
