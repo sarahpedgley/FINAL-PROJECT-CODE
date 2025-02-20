@@ -34,7 +34,9 @@ class GenreClassifier:
                 "a journey to the centre of the earth.txt",
                 "peter pan.txt",
                 "the marvelous land of oz.txt",
-                "through the looking-glass.txt"
+                "through the looking-glass.txt",
+                "the wind in the willows.txt",
+                "gulliver's travels.txt"
             ],
             "Sci-fi": [
                 "the war of the worlds.txt",
