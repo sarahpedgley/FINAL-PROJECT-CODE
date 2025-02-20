@@ -44,7 +44,11 @@ class GenreClassifier:
                 "the time machine.txt",
                 "RUR.txt",
                 "the eyes have it.txt",
-                "the island of doctor moreau.txt"
+                "the island of doctor moreau.txt",
+                "the hanging stranger.txt",
+                "the iron heel.txt",
+                "a princess of mars.txt",
+                "the scarlet plague.txt"
             ],
             "Horror": [
                 "carmilla.txt",
