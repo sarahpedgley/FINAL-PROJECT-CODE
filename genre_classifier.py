@@ -66,7 +66,11 @@ class GenreClassifier:
                 "the memoirs of sherlock holmes.txt",
                 "the murder on the links.txt",
                 "the return of sherlock holmes.txt",
-                "the mysterious affair at styles.txt"
+                "the mysterious affair at styles.txt",
+                "the draycott murder mystery.txt",
+                "the moonstone.txt",
+                "the shadow of the wolf.txt",
+                "the valley of fear.txt"
             ],
             "Romance": [
                 "pride and prejudice.txt",
