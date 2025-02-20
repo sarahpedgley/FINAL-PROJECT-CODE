@@ -80,7 +80,11 @@ class GenreClassifier:
                 "middlemarch.txt",
                 "the lady of the lake.txt",
                 "the romance of lust.txt",
-                "wuthering heights.txt"
+                "wuthering heights.txt",
+                "emma.txt",
+                "northanger abbey.txt",
+                "the mill on the floss.txt",
+                "the return of the native.txt"
             ],
         }
 
