@@ -50,7 +50,9 @@ class GenreClassifier:
                 "dracula.txt",
                 "the castle of otranto.txt",
                 "the mysteries of udolpho.txt",
-                "the trial.txt"
+                "the trial.txt",
+                "25 ghost stories.txt",
+                "the jewel of seven stars.txt"
             ],
             "Thriller": [
                 "the hound of the baskervilles.txt",
