@@ -109,11 +109,11 @@ class DictionaryAlgorithm():
             for keyword in keywords:
                 genre_scores[genre] += text.lower().count(keyword.lower()) 
                 
-                count = text.lower().count(keyword.lower())
-                genre_scores[genre] += count
+                #count = text.lower().count(keyword.lower())
+                #genre_scores[genre] += count
                 # Debugging: Print counts for each keyword
-                if count > 0:
-                    print(f"Keyword '{keyword}' found {count} times in genre '{genre}'.")
+                #if count > 0:
+                    #print(f"Keyword '{keyword}' found {count} times in genre '{genre}'.")
         return genre_scores
     
     def fit(self, X: List[str], y: List[str]) -> None:
