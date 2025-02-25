@@ -8,8 +8,8 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.svm import SVC
     
 genre_keywords = {
-    "Fantasy": ["dragon", "magic", "wizard", "castle", "sorcery", "witch", "curse", "hex", "castle", "royal", "princess", "prince", "palace", "country", "land", "wonder", "ancient", "prophecy", "god", "goddess", "elf", "fight", "sword", "battle", "hero", "quest", "knight", "alchemy", "rune", "beast", "forest", "spell", "enchantment", "fairy", "phoenix", "portal", "artifact"],
-    "Sci-fi": ["spaceship", "mars", "martian", "moon", "space", "alien", "robot", "future", "quantum", "equation", "formula", "lunar", "solar", "world", "earth", "space", "tunnel", "fact", "theorem", "AI", "galaxy", "simulation", "technology", "dystopia", "utopia", "android", "cyber", "gravity", "universe", "federation", "clone", "hologram", "drone", "orbital", "colony"],
+    "Fantasy": ["dragon", "magic", "wizard", "castle", "sorcery", "witch", "curse", "hex", "castle", "royal", "princess", "prince", "palace", "country", "land", "wonder", "ancient", "prophecy", "god", "goddess", "fight", "sword", "battle", "hero", "quest", "knight", "alchemy", "rune", "beast", "forest", "spell", "enchantment", "fairy", "phoenix", "portal", "artifact"],
+    "Sci-fi": ["spaceship", "mars", "martian", "moon", "space", "alien", "robot", "future", "quantum", "equation", "formula", "lunar", "solar", "earth", "space", "tunnel", "fact", "theorem", "galaxy", "simulation", "technology", "dystopia", "utopia", "android", "cyber", "gravity", "universe", "federation", "clone", "hologram", "drone", "orbital", "colony"],
     "Horror": ["ghost", "haunted", "vampire", "zombie", "fear", "blood", "decapitated", "head", "body", "kill", "terror", "afraid", "limb", "grotesque", "organ", "ooze", "needle", "coffin", "grave", "cemetery", "funeral", "possession", "exorcism", "demon", "shadow", "creepy", "eerie", "dark", "monster", "creation", "nightmare", "evil", "clown", "ritual", "doll", "sacrifice", "apparition"],
     "Thriller": ["murder", "spy", "conspiracy", "detective", "chase", "dark", "quiet", "suspicious", "shadow", "gloom", "night", "race", "body", "heart", "sudden", "knife", "fright", "fog", "secrets", "betrayal", "twist", "pursuit", "alibi", "cover-up", "hostage", "plot", "revenge", "surveillance", "investigation", "danger", "threat", "intense", "criminal", "trap" ],
     "Mystery": ["mystery", "murder","clue", "investigation", "detective", "crime", "scene", "body", "police", "evidence", "robbery", "business", "affair", "puzzle", "knife", "gun", "vengeance", "suspect", "witness", "interrogation", "alibi", "secret", "motive", "scheme", "disappearance", "whodunit", "hidden", "case", "sleuth", "trap", "detective", "testimony", "timeline", "autopsy", "solved", "files", "report", "journal", "lead","forensics", "evidence", "inspector"],
@@ -108,6 +108,12 @@ class DictionaryAlgorithm():
         for genre, keywords in self.genre_keywords.items():
             for keyword in keywords:
                 genre_scores[genre] += text.lower().count(keyword.lower()) 
+                
+                count = text.lower().count(keyword.lower())
+                genre_scores[genre] += count
+                # Debugging: Print counts for each keyword
+                if count > 0:
+                    print(f"Keyword '{keyword}' found {count} times in genre '{genre}'.")
         return genre_scores
     
     def fit(self, X: List[str], y: List[str]) -> None:

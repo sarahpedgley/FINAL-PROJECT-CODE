@@ -50,7 +50,6 @@ def main():
         exit(1)
     
     prediction = classifier.predict(sample.lower())   
-    print("Prediction:", prediction)
 
     # loop through each model so we get results for each one individually
     print("\nResults of each model:")
