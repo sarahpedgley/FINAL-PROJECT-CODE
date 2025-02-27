@@ -66,7 +66,10 @@ class GenreClassifier:
                 "benighted.txt",
                 "knock three-one-two.txt",
                 "the mill of silence.txt",
-                "the three just men.txt"
+                "the three just men.txt",
+                "ferdinand.txt",
+                "the fall of the house of usher.txt",
+                "the man who couldn't sleep.txt"
             ],
             "Mystery": [
                 "a study in scarlet.txt",
