@@ -58,7 +58,9 @@ class GenreClassifier:
                 "the mysteries of udolpho.txt",
                 "the trial.txt",
                 "25 ghost stories.txt",
-                "the jewel of seven stars.txt"
+                "the jewel of seven stars.txt",
+                "frankenstein.txt",
+                "jekyll and hyde.txt"
             ],
             "Thriller": [
                 "the hound of the baskervilles.txt",
