@@ -18,7 +18,8 @@ def main():
         "Dictionary": dictionary_algorithm
     }
     
-    training_dir = "C:\\Users\\pedgl\\OneDrive\\Documents\\Uni\\Final Year Project\\FINAL PROJECT CODE\\training_data"
+    #training_dir = "C:\\Users\\pedgl\\OneDrive\\Documents\\Uni\\Final Year Project\\FINAL PROJECT CODE\\training_data"
+    training_dir = os.path.join(os.getcwd(), "training_data")
 
     # load training data 
     classifier = GenreClassifier(models["Naive Bayes"], vectorizer, genre_labels)
