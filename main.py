@@ -19,7 +19,6 @@ def main():
         "Dictionary": dictionary_algorithm
     }
     
-    #training_dir = "C:\\Users\\pedgl\\OneDrive\\Documents\\Uni\\Final Year Project\\FINAL PROJECT CODE\\training_data"
     training_dir = os.path.join(os.getcwd(), "training_data")
 
     # load training data 
@@ -60,12 +59,12 @@ def main():
             classifier = GenreClassifier(model, vectorizer, genre_labels)
             if isinstance(model, DictionaryAlgorithm):
                 prediction = model.predict([sample.lower()])[0]
-                accuracy = model.score([sample.lower()], [prediction])
+                genre_scores = model.count_keywords(sample.lower())
+                confidence = genre_scores[prediction] / sum(genre_scores.values()) * 100
             else:
-                prediction = classifier.predict(sample.lower())
-                accuracy = classifier.evaluate([sample.lower()], [prediction])
+                prediction, confidence = classifier.predict_with_confidence(sample.lower())
             
-            print(f"\n{model_name} Prediction: {prediction}, Accuracy: {accuracy:.2f}")
+            print(f"\n{model_name} Prediction: {prediction}, Confidence: {confidence:.2f}%")
         except Exception as e:
             print(f"Error with model '{model_name}': {e}")
 

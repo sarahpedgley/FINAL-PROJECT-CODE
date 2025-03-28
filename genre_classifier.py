@@ -7,7 +7,6 @@ from typing import List, Tuple
 import os
 import nltk
 import string
-import re
 import inflect
 from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
@@ -183,6 +182,17 @@ class GenreClassifier:
             prediction = self.model.predict(text_vectorized)
         return prediction[0]
     
+    def predict_with_confidence(self, text: str) -> Tuple[str, float]:
+        if isinstance(self.model, DictionaryAlgorithm):
+            raise NotImplementedError("Confidence calculation is not supported for DictionaryAlgorithm.")
+        text_raw = self.preprocess(text)
+        text_vectorized = self.vectorizer.transform([text_raw])
+        probabilities = self.model.predict_proba(text_vectorized)[0]
+        max_index = probabilities.argmax()
+        prediction = self.genre_labels[max_index]
+        confidence = probabilities[max_index] * 100
+        return prediction, confidence
+
     def evaluate(self, X: List[str], y: List[str]) -> float: 
         X_vectorized = self.vectorizer.transform(X)
         predictions = self.model.predict(X_vectorized) 

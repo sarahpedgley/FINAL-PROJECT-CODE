@@ -25,6 +25,10 @@ class Model(ABC):
         pass
     
     @abstractmethod
+    def predict_proba(self, X) -> List[float]:
+        pass
+    
+    @abstractmethod
     def score(self, X: List[str], y: List[str]) -> float:
         pass
 
@@ -38,31 +42,40 @@ class NaiveBayesModel(Model):
     def predict(self, X) -> List[str]:
         return self.model.predict(X)
     
+    def predict_proba(self, X):
+        return self.model.predict_proba(X)
+    
     def score(self, X, y) -> float:
         return self.model.score(X, y)
 
 class LogisticRegressionModel(Model):
     def __init__(self):
-        self.model = LogisticRegression()
+        self.model = LogisticRegression(max_iter=1000) 
     
     def fit(self, X, y) -> None:
         self.model.fit(X, y)
     
     def predict(self, X) -> List[str]:
         return self.model.predict(X)
+    
+    def predict_proba(self, X):
+        return self.model.predict_proba(X)
     
     def score(self, X, y) -> float:
         return self.model.score(X, y)
         
 class SVMModel(Model):
     def __init__(self):
-        self.model = SVC()
+        self.model = SVC(probability=True)  # Enable probability estimates
     
     def fit(self, X, y) -> None:
         self.model.fit(X, y)
     
     def predict(self, X) -> List[str]:
         return self.model.predict(X)
+    
+    def predict_proba(self, X):
+        return self.model.predict_proba(X)
     
     def score(self, X, y) -> float:
         return self.model.score(X, y)
@@ -93,6 +106,16 @@ class EnsembleModel(Model):
             final_predictions.append(final_prediction)
         
         return final_predictions
+
+    def predict_proba(self, X):
+        # get probabilities from each model
+        nb_proba = self.naive_bayes.predict_proba(X)
+        lr_proba = self.logistic_regression.predict_proba(X)
+        svm_proba = self.svm.predict_proba(X)
+        
+        # average 
+        avg_proba = (nb_proba + lr_proba + svm_proba) / 3
+        return avg_proba
 
     def score(self, X, y) -> float:
         predictions = self.predict(X)
