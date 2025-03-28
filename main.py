@@ -37,6 +37,19 @@ def main():
         except Exception as e:
             print(f"Error loading training data: {e}")
             exit(1)
+            
+    #save the trained vectorizer
+    vectorizer.save("vectorizer.joblib")
+    print("Vectorizer saved to 'vectorizer.joblib'.")
+    
+    # load the saved vectorizer
+    vectorizer = Vectorizer()
+    try:
+        vectorizer.load("vectorizer.joblib")
+        print("Vectorizer loaded from 'vectorizer.joblib'.")
+    except FileNotFoundError:
+        print("Error: Saved vectorizer file 'vectorizer.joblib' not found. Please train the vectorizer first.")
+        exit(1)
 
     # classify sample text
     filename = input("Please enter the file name/location of the literary sample you would like to classify: ")
