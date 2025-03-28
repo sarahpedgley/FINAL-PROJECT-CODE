@@ -1,7 +1,6 @@
 from genre_classifier import GenreClassifier
 from models import EnsembleModel, NaiveBayesModel, LogisticRegressionModel, SVMModel, DictionaryAlgorithm
 from models import genre_keywords
-from sklearn.model_selection import cross_val_score
 from vectorizer import Vectorizer
 import os
 
@@ -33,23 +32,21 @@ def main():
     for model_name, model in models.items():
         try:
             classifier = GenreClassifier(model, vectorizer, genre_labels)
-            classifier.train(texts, labels)
+            model_filepath = f"{model_name.replace(' ', '_').lower()}_model.joblib"
+            
+            # check if the model is already saved / saving classifiers
+            if os.path.exists(model_filepath):
+                print(f"Loading saved {model_name} model...")
+                classifier.load_model(model_filepath)
+            else:
+                print(f"Training {model_name} model...")
+                classifier.train(texts, labels)
+                classifier.save_model(model_filepath)
+                print(f"{model_name} model saved to '{model_filepath}'.")
         except Exception as e:
-            print(f"Error loading training data: {e}")
+            print(f"Error training {model_name} model: {e}")
             exit(1)
             
-    #save the trained vectorizer
-    vectorizer.save("vectorizer.joblib")
-    print("Vectorizer saved to 'vectorizer.joblib'.")
-    
-    # load the saved vectorizer
-    vectorizer = Vectorizer()
-    try:
-        vectorizer.load("vectorizer.joblib")
-        print("Vectorizer loaded from 'vectorizer.joblib'.")
-    except FileNotFoundError:
-        print("Error: Saved vectorizer file 'vectorizer.joblib' not found. Please train the vectorizer first.")
-        exit(1)
 
     # classify sample text
     filename = input("Please enter the file name/location of the literary sample you would like to classify: ")
@@ -70,6 +67,9 @@ def main():
     for model_name, model in models.items():
         try:
             classifier = GenreClassifier(model, vectorizer, genre_labels)
+            model_filepath = f"{model_name.replace(' ', '_').lower()}_model.joblib"
+            classifier.load_model(model_filepath)
+            
             if isinstance(model, DictionaryAlgorithm):
                 prediction = model.predict([sample.lower()])[0]
                 genre_scores = model.count_keywords(sample.lower())

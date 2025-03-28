@@ -12,6 +12,7 @@ from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
 from nltk.stem.porter import PorterStemmer
 from nltk.stem import WordNetLemmatizer
+from joblib import dump, load
 
 nltk.download('punkt', quiet=True)
 nltk.download('wordnet', quiet=True) 
@@ -171,6 +172,12 @@ class GenreClassifier:
         preprocessed_texts = [self.preprocess(text) for text in X]
         X_vectorized = self.vectorizer.fit_transform(preprocessed_texts)
         self.model.fit(X_vectorized, y)
+        
+    def save_model(self, filepath: str):
+        dump(self.model, filepath)
+
+    def load_model(self, filepath: str):
+        self.model = load(filepath)
     
     def predict(self, text: str) -> str:
         if isinstance(self.model, DictionaryAlgorithm):

@@ -66,7 +66,7 @@ class LogisticRegressionModel(Model):
         
 class SVMModel(Model):
     def __init__(self):
-        self.model = SVC(probability=True)  # Enable probability estimates
+        self.model = SVC(probability=True)  
     
     def fit(self, X, y) -> None:
         self.model.fit(X, y)
