@@ -2,7 +2,6 @@ from abc import ABC, abstractmethod
 from typing import List, Dict
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score
-from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.naive_bayes import MultinomialNB
 from sklearn.linear_model import LogisticRegression
 from sklearn.svm import SVC
@@ -108,7 +107,6 @@ class DictionaryAlgorithm():
         for genre, keywords in self.genre_keywords.items():
             for keyword in keywords:
                 genre_scores[genre] += text.lower().count(keyword.lower()) 
-                
                 #count = text.lower().count(keyword.lower())
                 #genre_scores[genre] += count
                 # Debugging: Print counts for each keyword
@@ -128,6 +126,6 @@ class DictionaryAlgorithm():
             predictions.append(best_genre)
         return predictions
     
-    def score(self, X, y) -> float:
+    def score(self, X, y) -> float:  
         predictions = self.predict(X)
         return accuracy_score(y, predictions)

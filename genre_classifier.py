@@ -2,6 +2,7 @@ from models import EnsembleModel, NaiveBayesModel, LogisticRegressionModel, SVMM
 from vectorizer import Vectorizer
 from models import Model
 from sklearn.metrics import accuracy_score
+from sklearn.model_selection import cross_val_score
 from typing import List, Tuple
 import os
 import nltk
@@ -182,7 +183,7 @@ class GenreClassifier:
             prediction = self.model.predict(text_vectorized)
         return prediction[0]
     
-    def evaluate(self, X: List[str], y: List[str]) -> float:
+    def evaluate(self, X: List[str], y: List[str]) -> float: 
         X_vectorized = self.vectorizer.transform(X)
-        predictions = self.model.predict(X_vectorized)
+        predictions = self.model.predict(X_vectorized) 
         return accuracy_score(y, predictions)

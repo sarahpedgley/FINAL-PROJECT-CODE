@@ -1,6 +1,7 @@
 from genre_classifier import GenreClassifier
 from models import EnsembleModel, NaiveBayesModel, LogisticRegressionModel, SVMModel, DictionaryAlgorithm
 from models import genre_keywords
+from sklearn.model_selection import cross_val_score
 from vectorizer import Vectorizer
 import os
 
@@ -56,12 +57,15 @@ def main():
     print("\nResults of each model:")
     for model_name, model in models.items():
         try:
+            classifier = GenreClassifier(model, vectorizer, genre_labels)
             if isinstance(model, DictionaryAlgorithm):
                 prediction = model.predict([sample.lower()])[0]
+                accuracy = model.score([sample.lower()], [prediction])
             else:
-                classifier = GenreClassifier(model, vectorizer, genre_labels)
                 prediction = classifier.predict(sample.lower())
-            print(f"\n{model_name} Prediction: {prediction}")
+                accuracy = classifier.evaluate([sample.lower()], [prediction])
+            
+            print(f"\n{model_name} Prediction: {prediction}, Accuracy: {accuracy:.2f}")
         except Exception as e:
             print(f"Error with model '{model_name}': {e}")
 
