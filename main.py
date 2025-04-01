@@ -1,7 +1,6 @@
 from genre_classifier import GenreClassifier
 from models import EnsembleModel, NaiveBayesModel, LogisticRegressionModel, SVMModel, DictionaryAlgorithm
 from models import genre_keywords
-from sklearn.model_selection import cross_val_score
 from vectorizer import Vectorizer
 import os
 
