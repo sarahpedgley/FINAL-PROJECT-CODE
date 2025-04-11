@@ -2,9 +2,7 @@ Automatic Classification of 19th Century Literary Fiction by Genre
 
 Sarah Pedgley, University of Birmingham, School of Computer Science
 
-(Add Abstract?)
-
-This project is a literary genre classifier that uses machine learning models and a dictionary-based algorithm to classify text into the genres: Fantasy, Sci-fi, Horror, Thriller, Mystery, and Romance.
+This project is a literary genre classifier that uses machine learning models and a dictionary-based algorithm to classify text into the genres: fantasy, sci-fi, horror, thriller, mystery, and romance.
 
 ## Features
 - Supports Naive Bayes, Logistic Regression, SVM, and Ensemble models.
