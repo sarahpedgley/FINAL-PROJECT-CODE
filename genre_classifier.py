@@ -142,7 +142,7 @@ class GenreClassifier:
 
         text = ' '.join(new_string)
         
-        #remove punctuation/special characters ?? or is this useful for e.g romance ?
+        #remove punctuation/special characters 
         translator = str.maketrans('', '', string.punctuation)
         text = text.translate(translator)
         
